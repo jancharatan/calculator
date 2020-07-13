@@ -35,5 +35,11 @@
 }
 
 .top-margin {
-    margin-top: 20px;
+    margin-top: 10px;
+    margin-left: 0px;
+}
+
+.isWide {
+    margin-left: 0px;
+    margin-top: 0px;
 }
