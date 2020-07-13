@@ -1,6 +1,5 @@
 import React from 'react';
-import './Calculator.css';
-import './Home.css'
+import './Pages.css'
 import Button from '../components/Button';
 import ClearButton from '../components/ClearButton';
 import Input from '../components/Input';
@@ -91,10 +90,10 @@ class Calculator extends React.Component {
             <RouteButton> Back </RouteButton>
           </Link>
         </div>
-        <div className="calculator">
-          <div className="calc-wrapper">
-            <div className="calc-header">
-              Calculator
+        <div className="page">
+          <div className="wrapper">
+            <div className="header">
+              Calculator.
           </div>
             <div className="row">
               <Input input={this.state.input}></Input>
@@ -126,7 +125,7 @@ class Calculator extends React.Component {
             <div className="row">
               <ClearButton handleClear={() => this.setState({ input: "" })}>Clear</ClearButton>
             </div>
-            <div className="calc-footer">
+            <div className="footer">
               Created in July 2020 by Jan Charatan.
           </div>
           </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import './About.css';
+import './Pages.css';
 import { Link } from 'react-router-dom';
 import RouteButton from '../components/RouteButton';
 
@@ -8,7 +8,7 @@ const About = () => (
     <Link className="link" to="/">
       <RouteButton> Back </RouteButton>
     </Link>
-    <div className="home">
+    <div className="page">
       <div className="wrapper">
         <div className="header">
           About.
