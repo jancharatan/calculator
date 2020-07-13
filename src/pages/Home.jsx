@@ -12,6 +12,9 @@ export const Home = () => (
       <Link className="link" to="/calculator">
         <RouteButton> Calculator </RouteButton>
       </Link>
+      <div className="footer">
+        Created in July 2020 by Jan Charatan.
+      </div>
     </div>
   </div>
 );
