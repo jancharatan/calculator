@@ -1,17 +1,22 @@
 import React from 'react';
 import './Button.css';
+import PropTypes from 'prop-types';
 
-const isOperator = val => {
-  return !isNaN(val) || val === "." || val === "=";
-}
+const isOperator = (val) => ['+', '-', '*', '/'].includes(val);
 
-export const Button = props => (
-  <div 
-    className={`button-wrapper ${isOperator(props.children) ? null : "operator"}`}
-    onClick={() => props.handleClick(props.children)}
+const Button = ({ handleClick, children }) => (
+  <button
+    type="button"
+    className={`button-wrapper ${isOperator(children) ? null : 'operator'}`}
+    onClick={() => handleClick(children)}
   >
-    {props.children}
-  </div>
+    {children}
+  </button>
 );
+
+Button.propTypes = {
+  children: PropTypes.string.isRequired,
+  handleClick: PropTypes.func.isRequired,
+};
 
 export default Button;

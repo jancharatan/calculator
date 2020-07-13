@@ -9,4 +9,7 @@
     color: black;
     flex: 1;
     outline: 1px solid #888888;
+    padding: 0;
+    border: none;
+    font-family: -apple-system, BlinkMacSystemFont
 }

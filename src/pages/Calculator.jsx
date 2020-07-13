@@ -1,14 +1,14 @@
 import React from 'react';
 import './Calculator.css';
 import './Home.css'
-import { Button } from '../components/Button';
-import { ClearButton } from '../components/ClearButton';
-import { Input } from '../components/Input';
+import Button from '../components/Button';
+import ClearButton from '../components/ClearButton';
+import Input from '../components/Input';
 import { evaluate } from 'mathjs';
-import { RouteButton } from '../components/RouteButton';
+import RouteButton from '../components/RouteButton';
 import { Link } from 'react-router-dom';
 
-export class Calculator extends React.Component {
+class Calculator extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -26,22 +26,22 @@ export class Calculator extends React.Component {
 
   addToInput = (val) => {
     if (this.state.input === "Error" || !this.state.input) {
-      this.setState ({
+      this.setState({
         input: val
       })
     } else {
-    this.setState({
-      input: this.state.input + val,
-    });
-  }
+      this.setState({
+        input: this.state.input + val,
+      });
+    }
   }
 
   downHandler = (e) => {
     if (e.key === "Enter" || e.key === "=") {
       this.handleEqual();
-    } 
+    }
     if (e.key === "Backspace") {
-      if(this.state.input === "Error") {
+      if (this.state.input === "Error") {
         this.setState({
           input: ""
         })
@@ -56,7 +56,7 @@ export class Calculator extends React.Component {
     const chars = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "+", "-", "/", "*", "."];
     if (chars.includes(e.key)) {
       this.addToInput(e.key);
-    } 
+    }
   }
 
   handleEqual = () => {
@@ -68,19 +68,21 @@ export class Calculator extends React.Component {
       this.setState({
         input: "Error",
       });
-    }   
+    }
   }
 
   removeChar() {
     try {
       this.setState({
         input: this.state.input.slice(0, -1)
-    })} catch (error) {
+      })
+    } catch (error) {
       this.setState({
         input: "",
       });
-    }}
-  
+    }
+  }
+
   render() {
     return (
       <div>
@@ -90,47 +92,49 @@ export class Calculator extends React.Component {
           </Link>
         </div>
         <div className="calculator">
-        <div className="calc-wrapper">
-          <div className="calc-header">
-            Jan's Calculator
+          <div className="calc-wrapper">
+            <div className="calc-header">
+              Calculator
           </div>
-          <div className="row">
-            <Input input={this.state.input}></Input>
+            <div className="row">
+              <Input input={this.state.input}></Input>
+            </div>
+            <div className="row">
+              <Button handleClick={this.addToInput}>7</Button>
+              <Button handleClick={this.addToInput}>8</Button>
+              <Button handleClick={this.addToInput}>9</Button>
+              <Button handleClick={this.addToInput}>/</Button>
+            </div>
+            <div className="row">
+              <Button handleClick={this.addToInput}>4</Button>
+              <Button handleClick={this.addToInput}>5</Button>
+              <Button handleClick={this.addToInput}>6</Button>
+              <Button handleClick={this.addToInput}>*</Button>
+            </div>
+            <div className="row">
+              <Button handleClick={this.addToInput}>1</Button>
+              <Button handleClick={this.addToInput}>2</Button>
+              <Button handleClick={this.addToInput}>3</Button>
+              <Button handleClick={this.addToInput}>+</Button>
+            </div>
+            <div className="row">
+              <Button handleClick={this.addToInput}>.</Button>
+              <Button handleClick={this.addToInput}>0</Button>
+              <Button handleClick={this.handleEqual}>=</Button>
+              <Button handleClick={this.addToInput}>-</Button>
+            </div>
+            <div className="row">
+              <ClearButton handleClear={() => this.setState({ input: "" })}>Clear</ClearButton>
+            </div>
+            <div className="calc-footer">
+              Created in July 2020 by Jan Charatan.
           </div>
-          <div className="row">
-            <Button handleClick={this.addToInput}>7</Button>
-            <Button handleClick={this.addToInput}>8</Button>
-            <Button handleClick={this.addToInput}>9</Button>
-            <Button handleClick={this.addToInput}>/</Button>
-          </div>
-          <div className="row">
-            <Button handleClick={this.addToInput}>4</Button>
-            <Button handleClick={this.addToInput}>5</Button>
-            <Button handleClick={this.addToInput}>6</Button>
-            <Button handleClick={this.addToInput}>*</Button>
-          </div>
-          <div className="row">
-            <Button handleClick={this.addToInput}>1</Button>
-            <Button handleClick={this.addToInput}>2</Button>
-            <Button handleClick={this.addToInput}>3</Button>
-            <Button handleClick={this.addToInput}>+</Button>
-          </div>
-          <div className="row">
-            <Button handleClick={this.addToInput}>.</Button>
-            <Button handleClick={this.addToInput}>0</Button>
-            <Button handleClick={this.handleEqual}>=</Button>
-            <Button handleClick={this.addToInput}>-</Button>
-          </div>
-          <div className="row">
-            <ClearButton handleClear={() => this.setState({input:""})}>Clear</ClearButton>
-          </div>
-          <div className="calc-footer">
-            Created in July 2020 by Jan Charatan.
           </div>
         </div>
-      </div>
 
       </div>
     );
-  } 
+  }
 }
+
+export default Calculator;

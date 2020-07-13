@@ -1,8 +1,20 @@
 import React from 'react';
 import './RouteButton.css';
+import PropTypes from 'prop-types';
 
-export const RouteButton = props => (
-  <div className="routebutton-wrapper">
-    {props.children}
-  </div>
-)
+const RouteButton = ({ children, isBig }) => (
+  <button type="button" className={`${isBig ? 'routebutton-wrapper-big' : 'routebutton-wrapper-small'}`}>
+    {children}
+  </button>
+);
+
+RouteButton.propTypes = {
+  children: PropTypes.string.isRequired,
+  isBig: PropTypes.bool,
+};
+
+RouteButton.defaultProps = {
+  isBig: false,
+};
+
+export default RouteButton;

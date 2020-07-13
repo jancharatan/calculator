@@ -1,6 +1,13 @@
 import React from 'react';
 import './Input.css';
+import PropTypes from 'prop-types';
 
-export const Input = (props) => (
-  <div className="input">{props.input}</div>
+const Input = ({ input }) => (
+  <div className="input">{input}</div>
 );
+
+Input.propTypes = {
+  input: PropTypes.string.isRequired,
+};
+
+export default Input;
