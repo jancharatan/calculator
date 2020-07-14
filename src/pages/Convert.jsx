@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { evaluate } from 'mathjs';
 import RouteButton from '../components/RouteButton';
 import './Pages.css';
+import '../components/TextField.css';
 import TextField from '../components/TextField';
 import TabButton from '../components/TabButton';
 import SelectorRow from '../components/SelectorRow';
@@ -20,6 +22,35 @@ const Convert = () => {
   const [selectedVolumeOutput, setSelectedVolumeOutput] = useState('Cubic Meter');
   const [selectedWeightInput, setSelectedWeightInput] = useState('Kilogram');
   const [selectedWeightOutput, setSelectedWeightOutput] = useState('Kilogram');
+  const [currentOutput, setCurrentOutput] = useState('Hello');
+  const [currentInput, setCurrentInput] = useState('');
+
+  const convertNumber = () => {
+    if (selectedType === 'Length') {
+      try {
+        setCurrentOutput(evaluate(`${currentInput} ${selectedLengthInput.toLowerCase()} to ${selectedLengthOutput.toLowerCase()}`));
+      } catch (err) {
+        setCurrentOutput('Error');
+      }
+    } else if (selectedType === 'Time') {
+      setCurrentOutput('Time');
+    } else if (selectedType === 'Temperature') {
+      setCurrentOutput('Temperature');
+    } else if (selectedType === 'Area') {
+      setCurrentOutput('Area');
+    } else if (selectedType === 'Volume') {
+      setCurrentOutput('Volume');
+    } else if (selectedType === 'Weight') {
+      setCurrentOutput('Weight');
+    } else {
+      setCurrentOutput('Error');
+    }
+  };
+
+  const changeInputAndConvert = (event) => {
+    setCurrentInput(event.target.value);
+    convertNumber();
+  };
 
   return (
     <div>
@@ -36,13 +67,13 @@ const Convert = () => {
               <TextField isOutput isTitle titleText="Input" />
             </div>
             <div className="row border-add">
-              <TextField />
+              <TextField evaluateValue={changeInputAndConvert} />
             </div>
             <div className="row border-add margin-top-row">
               <TextField isOutput isTitle titleText="Output" />
             </div>
             <div className="row border-add">
-              <TextField isOutput />
+              <TextField isOutput titleText={currentOutput} />
             </div>
             <div className="row border-add margin-top-row">
               <TabButton handleClick={() => setSelectedType('Length')} isSelected={selectedType === 'Length'}>
@@ -77,7 +108,6 @@ const Convert = () => {
                   <SelectorRow value="Yard" inputFunction={setSelectedLengthInput} outputFunction={setSelectedLengthOutput} selectedInput={selectedLengthInput} selectedOutput={selectedLengthOutput} />
                   <SelectorRow value="Foot" inputFunction={setSelectedLengthInput} outputFunction={setSelectedLengthOutput} selectedInput={selectedLengthInput} selectedOutput={selectedLengthOutput} />
                   <SelectorRow value="Inch" inputFunction={setSelectedLengthInput} outputFunction={setSelectedLengthOutput} selectedInput={selectedLengthInput} selectedOutput={selectedLengthOutput} />
-                  <SelectorRow value="Light Year" inputFunction={setSelectedLengthInput} outputFunction={setSelectedLengthOutput} selectedInput={selectedLengthInput} selectedOutput={selectedLengthOutput} />
                 </div>
               ) : null}
               {selectedType === 'Time' ? (
