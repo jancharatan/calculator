@@ -18,3 +18,24 @@
     background-color: #fe9241;
     color: white;
 }
+
+.tab-button-wrapper {
+    height: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: lighter;
+    font-size: 1em;
+    background-color: #e0e1e6;
+    color: #888888;
+    flex: 1;
+    outline: 1px solid #888888;
+    padding: 7px;
+    border: none;
+    font-family: -apple-system, BlinkMacSystemFont
+}
+
+.tab-button-selected {
+    background-color: #888888;
+    color: white;
+}

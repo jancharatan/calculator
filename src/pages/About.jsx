@@ -16,7 +16,7 @@ const About = () => (
         <div>
           This web app is a multitool for doing a bunch of things. It was built by
           {' '}
-          <a href="http://www.jancharatan.com/">
+          <a href="https://www.jancharatan.com/">
             Jan Charatan
           </a>
           , a computer science student at Pomona College using

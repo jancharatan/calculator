@@ -1,0 +1,34 @@
+.textfield-wrapper {
+    display: flex;
+    flex: 1;
+}
+
+.textfield {
+    height: 2em ;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.4em;
+    background-color: black;
+    color: white;
+    padding: 0.5em;
+    outline: 1px solid #888888;
+    border: 0px;
+    width: 100%;
+}
+
+.textfield:focus {
+    outline:1px solid #888888 !important;
+    outline-width: 0 !important;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+}
+
+.title-styling {
+    color: white;
+    font-weight: bold;
+    align-items: left;
+    height: 1em;
+}

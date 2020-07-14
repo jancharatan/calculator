@@ -3,7 +3,7 @@
     justify-content: center;
     height: 10vh;
     width: 100%;
-    margin-top: 50px;
+    margin-top: 20px;
 }
 
 .header {
@@ -22,7 +22,7 @@
     display: flex;
     flex: 1;
     margin-top: 15px;
-    margin-bottom: 100px;
+    margin-bottom: 40px;
 }
 
 .wrapper {
@@ -37,5 +37,25 @@
 .row {
     display: flex;
     width: 100%;
+}
+
+.width-helper {
+    width: 400px;
+}
+
+.flex-helper {
+    display: flex;
+    flex: 1;
+    width: 100%;
+}
+
+.border-add {
+    border-left: 1px solid #888888;
+    border-right: 1px solid #888888;
+    border-bottom: 1px solid #888888
+}
+
+.margin-top-row {
+    margin-top: 10px;
 }
   

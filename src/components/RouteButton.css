@@ -37,9 +37,11 @@
 .top-margin {
     margin-top: 10px;
     margin-left: 0px;
+    width: 400px;
 }
 
 .isWide {
     margin-left: 0px;
     margin-top: 0px;
+    width: 400px
 }
