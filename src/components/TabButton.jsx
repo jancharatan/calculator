@@ -3,7 +3,11 @@ import './Button.css';
 import PropTypes from 'prop-types';
 
 const TabButton = ({ children, isSelected, handleClick }) => (
-  <button type="button" className={`tab-button-wrapper ${isSelected ? 'tab-button-selected' : ''}`} onClick={() => handleClick(children)}>
+  <button
+    type="button"
+    className={`tab-button-wrapper ${isSelected ? 'tab-button-selected' : ''}`}
+    onClick={() => handleClick(children)}
+  >
     {children}
   </button>
 );
