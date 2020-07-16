@@ -25,6 +25,38 @@ const Convert = () => {
   const [weightOutput, setWeightOutput] = useState('Kilogram');
   const [currentInput, setCurrentInput] = useState('');
 
+  const categories = ['Length', 'Time', 'Temperature', 'Area', 'Volume', 'Weight'];
+
+  const areaConversions = {
+    'Square Meter': 'm2',
+    'Square Kilometer': 'km2',
+    'Square Centimeter': 'cm2',
+    Hectare: 'hectare',
+    'Square Mile': 'sqmi',
+    'Square Yard': 'sqyd',
+    'Square Foot': 'sqft',
+    'Square Inch': 'sqin',
+    Acre: 'acre',
+  };
+
+  const volumeConversions = {
+    'Cubic Meter': 'm3',
+    'Cubic Kilometer': 'km3',
+    'Cubic Centimeter': 'cm3',
+    Liter: 'liter',
+    Milliliter: 'milliliter',
+    Gallon: 'gal',
+    Quart: 'qt',
+    Pint: 'pt',
+    Cup: 'cup',
+    'Fluid Ounce': 'floz',
+    'Table Spoon': 'tablespoon',
+    'Tea Spoon': 'teaspoon',
+    'Cubic Yard': 'cuyd',
+    'Cubic Foot': 'cuft',
+    'Cubic Inch': 'cuin',
+  };
+
   const changeInput = (event) => {
     setCurrentInput(event.target.value);
   };
@@ -55,11 +87,35 @@ const Convert = () => {
         return 'Error';
       }
     } else if (selectedType === 'Area') {
-      return 'Area';
+      try {
+        const input = `${currentInput} ${areaConversions[areaInput]} to ${areaConversions[areaOutput]}`;
+        return math.eval(input);
+      } catch (err) {
+        return 'Error';
+      }
     } else if (selectedType === 'Volume') {
-      return 'Volume';
+      try {
+        const input = `${currentInput} ${volumeConversions[volumeInput]} to ${volumeConversions[volumeOutput]}`;
+        return math.eval(input);
+      } catch (err) {
+        return 'Error';
+      }
     } else if (selectedType === 'Weight') {
-      return 'Weight';
+      try {
+        if (weightInput === 'Pound' && weightOutput === 'Pound') {
+          return math.eval(`${currentInput} lb to lb`);
+        }
+        if (weightInput === 'Pound') {
+          return math.eval(`${currentInput} lb to ${weightOutput.toLowerCase()}`);
+        }
+        if (weightOutput === 'Pound') {
+          return math.eval(`${currentInput} ${weightInput.toLowerCase()} to lb`);
+        }
+        const input = `${currentInput} ${weightInput.toLowerCase()} to ${weightOutput.toLowerCase()}`;
+        return math.eval(input);
+      } catch (err) {
+        return 'Error';
+      }
     } else {
       return 'Error';
     }
@@ -87,24 +143,11 @@ const Convert = () => {
               <TextField isOutput titleText={convertNumber()} />
             </div>
             <div className="row border-add margin-top-row">
-              <TabButton handleClick={() => setSelectedType('Length')} isSelected={selectedType === 'Length'}>
-                Length
-              </TabButton>
-              <TabButton handleClick={() => setSelectedType('Time')} isSelected={selectedType === 'Time'}>
-                Time
-              </TabButton>
-              <TabButton handleClick={() => setSelectedType('Temperature')} isSelected={selectedType === 'Temperature'}>
-                Temperature
-              </TabButton>
-              <TabButton handleClick={() => setSelectedType('Area')} isSelected={selectedType === 'Area'}>
-                Area
-              </TabButton>
-              <TabButton handleClick={() => setSelectedType('Volume')} isSelected={selectedType === 'Volume'}>
-                Volume
-              </TabButton>
-              <TabButton handleClick={() => setSelectedType('Weight')} isSelected={selectedType === 'Weight'}>
-                Weight
-              </TabButton>
+              {categories.map((cat) => (
+                <TabButton handleClick={() => setSelectedType(cat)} isSelected={selectedType === cat}>
+                  {cat}
+                </TabButton>
+              ))}
             </div>
             <div className="row border-add">
               {selectedType === 'Length' ? (

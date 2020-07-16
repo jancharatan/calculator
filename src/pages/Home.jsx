@@ -10,22 +10,19 @@ const Home = () => (
     </Link>
     <div className="page">
       <div className="wrapper">
-        <div className="header">
-          Select a tool.
-        </div>
+        <div className="header">Select a tool.</div>
         <Link className="link" to="/calculator">
-          <RouteButton isBig> Calculator </RouteButton>
+          <RouteButton isBig>Calculator</RouteButton>
         </Link>
         <Link className="link" to="/convert">
-          <RouteButton isBig notFirst> Convert Units </RouteButton>
+          <RouteButton isBig notFirst>
+            Convert Units
+          </RouteButton>
         </Link>
-        <div className="footer">
-          Created in July 2020 by Jan Charatan.
-        </div>
+        <div className="footer">Created in July 2020 by Jan Charatan.</div>
       </div>
     </div>
   </div>
-
 );
 
 export default Home;
