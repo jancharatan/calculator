@@ -22,35 +22,35 @@ const Convert = () => {
   const [selectedVolumeOutput, setSelectedVolumeOutput] = useState('Cubic Meter');
   const [selectedWeightInput, setSelectedWeightInput] = useState('Kilogram');
   const [selectedWeightOutput, setSelectedWeightOutput] = useState('Kilogram');
-  const [currentOutput, setCurrentOutput] = useState('');
   const [currentInput, setCurrentInput] = useState('');
+  const changeInputAndConvert = (event) => {
+    setCurrentInput(event.target.value);
+  };
 
   const convertNumber = () => {
     if (selectedType === 'Length') {
       try {
+        if (!currentInput) {
+          return '';
+        }
         const input = `${currentInput} ${selectedLengthInput.toLowerCase()} to ${selectedLengthOutput.toLowerCase()}`;
-        setCurrentOutput(math.eval(input));
+        return math.eval(input);
       } catch (err) {
-        setCurrentOutput('Error');
+        return 'Error';
       }
     } else if (selectedType === 'Time') {
-      setCurrentOutput('Time');
+      return 'Time';
     } else if (selectedType === 'Temperature') {
-      setCurrentOutput('Temperature');
+      return 'Temperature';
     } else if (selectedType === 'Area') {
-      setCurrentOutput('Area');
+      return 'Area';
     } else if (selectedType === 'Volume') {
-      setCurrentOutput('Volume');
+      return 'Volume';
     } else if (selectedType === 'Weight') {
-      setCurrentOutput('Weight');
+      return 'Weight';
     } else {
-      setCurrentOutput('Error');
+      return 'Error';
     }
-  };
-
-  const changeInputAndConvert = (event) => {
-    setCurrentInput(event.target.value);
-    convertNumber();
   };
 
   return (
@@ -66,13 +66,13 @@ const Convert = () => {
               <TextField isOutput isTitle titleText="Input" />
             </div>
             <div className="row border-add">
-              <TextField evaluateValue={changeInputAndConvert} />
+              <TextField titleText={currentInput} evaluateValue={changeInputAndConvert} />
             </div>
             <div className="row border-add margin-top-row">
               <TextField isOutput isTitle titleText="Output" />
             </div>
             <div className="row border-add">
-              <TextField isOutput titleText={currentOutput} />
+              <TextField isOutput titleText={convertNumber()} />
             </div>
             <div className="row border-add margin-top-row">
               <TabButton handleClick={() => setSelectedType('Length')} isSelected={selectedType === 'Length'}>
