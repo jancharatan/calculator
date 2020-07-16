@@ -55,14 +55,7 @@ const Convert = () => {
         return 'Error';
       }
     } else if (selectedType === 'Area') {
-      try {
-        const input = `${currentInput} 
-        ${areaInput.toLowerCase().replace(/\s/g, '')} to 
-        ${areaOutput.toLowerCase().replace(/\s/g, '')}`;
-        return math.eval(input);
-      } catch (err) {
-        return 'Error';
-      }
+      return 'Area';
     } else if (selectedType === 'Volume') {
       return 'Volume';
     } else if (selectedType === 'Weight') {
