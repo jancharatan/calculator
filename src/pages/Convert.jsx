@@ -22,15 +22,14 @@ const Convert = () => {
   const [selectedVolumeOutput, setSelectedVolumeOutput] = useState('Cubic Meter');
   const [selectedWeightInput, setSelectedWeightInput] = useState('Kilogram');
   const [selectedWeightOutput, setSelectedWeightOutput] = useState('Kilogram');
-  const [currentOutput, setCurrentOutput] = useState('Hello');
+  const [currentOutput, setCurrentOutput] = useState('');
   const [currentInput, setCurrentInput] = useState('');
 
   const convertNumber = () => {
     if (selectedType === 'Length') {
       try {
-        setCurrentOutput(
-          evaluate(`${currentInput} ${selectedLengthInput.toLowerCase()} to ${selectedLengthOutput.toLowerCase()}`)
-        );
+        const input = `${currentInput} ${selectedLengthInput.toLowerCase()} to ${selectedLengthOutput.toLowerCase()}`;
+        setCurrentOutput(evaluate(input));
       } catch (err) {
         setCurrentOutput('Error');
       }
