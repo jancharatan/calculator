@@ -3,7 +3,7 @@ import './Pages.css'
 import Button from '../components/Button';
 import ClearButton from '../components/ClearButton';
 import Input from '../components/Input';
-import { evaluate } from 'mathjs';
+import math from 'mathjs';
 import RouteButton from '../components/RouteButton';
 import { Link } from 'react-router-dom';
 
@@ -61,7 +61,7 @@ class Calculator extends React.Component {
   handleEqual = () => {
     try {
       this.setState({
-        input: evaluate(this.state.input)
+        input: math.eval(this.state.input)
       });
     } catch (error) {
       this.setState({

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { evaluate } from 'mathjs';
+import math from 'mathjs';
 import RouteButton from '../components/RouteButton';
 import './Pages.css';
 import '../components/TextField.css';
@@ -29,7 +29,7 @@ const Convert = () => {
     if (selectedType === 'Length') {
       try {
         const input = `${currentInput} ${selectedLengthInput.toLowerCase()} to ${selectedLengthOutput.toLowerCase()}`;
-        setCurrentOutput(evaluate(input));
+        setCurrentOutput(math.eval(input));
       } catch (err) {
         setCurrentOutput('Error');
       }
