@@ -8,9 +8,9 @@ import Convert from './pages/Convert';
 const App = () => (
   <Switch>
     <Route path="/calculator" component={Home} exact />
-    <Route path="/calculator/about" component={About} exact />
-    <Route path="/calculator/calc" component={Calculator} exact />
-    <Route path="/calculator/convert" component={Convert} exact />
+    <Route path="/about" component={About} exact />
+    <Route path="/calc" component={Calculator} exact />
+    <Route path="/convert" component={Convert} exact />
   </Switch>
 );
 
