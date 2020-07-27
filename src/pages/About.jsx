@@ -5,7 +5,7 @@ import RouteButton from '../components/RouteButton';
 
 const About = () => (
   <div>
-    <Link className="link" to="/">
+    <Link className="link" to="/calculator">
       <RouteButton> Back </RouteButton>
     </Link>
     <div className="page">

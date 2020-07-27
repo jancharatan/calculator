@@ -123,7 +123,7 @@ const Convert = () => {
 
   return (
     <div>
-      <Link className="link" to="/">
+      <Link className="link" to="/calculator">
         <RouteButton> Back </RouteButton>
       </Link>
       <div className="page">

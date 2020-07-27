@@ -86,7 +86,7 @@ class Calculator extends React.Component {
     return (
       <div>
         <div>
-          <Link className="link" to="/">
+          <Link className="link" to="/calculator">
             <RouteButton> Back </RouteButton>
           </Link>
         </div>

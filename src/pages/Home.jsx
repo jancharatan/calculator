@@ -5,16 +5,16 @@ import RouteButton from '../components/RouteButton';
 
 const Home = () => (
   <div>
-    <Link className="link" to="/about">
+    <Link className="link" to="calculator/about">
       <RouteButton> About </RouteButton>
     </Link>
     <div className="page">
       <div className="wrapper">
         <div className="header">Select a tool.</div>
-        <Link className="link" to="/calculator">
+        <Link className="link" to="calculator/calc">
           <RouteButton isBig>Calculator</RouteButton>
         </Link>
-        <Link className="link" to="/convert">
+        <Link className="link" to="calculator/convert">
           <RouteButton isBig notFirst>
             Convert Units
           </RouteButton>
